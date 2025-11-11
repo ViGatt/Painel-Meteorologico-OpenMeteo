@@ -1,0 +1,12 @@
+<div *ngIf="dailyData" class="daily-forecast-container">
+  <h3>Previsão para 7 dias</h3>
+
+  <div class="cards-container">
+    <div *ngFor="let dia of dailyData.time; let i = index" class="card">
+      <strong>{{ dia | date : "dd/MM" }}</strong>
+      <p>Máx: {{ dailyData.temperature_2m_max[i] | number : "1.0-0" }}°C</p>
+      <p>Mín: {{ dailyData.temperature_2m_min[i] | number : "1.0-0" }}°C</p>
+      <p>Chuva: {{ dailyData.rain_sum[i] }} mm</p>
+    </div>
+  </div>
+</div>

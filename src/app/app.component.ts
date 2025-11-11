@@ -2,26 +2,34 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TempoService } from './services/tempo.service';
-
 import { BuscaTempoComponent } from './components/busca-tempo/busca-tempo.component';
-
 import { switchMap } from 'rxjs/operators';
+
+import { PrevisaoDiariaComponent } from './components/previsao-diaria/previsao-diaria.component';
+import { PrevisaoHorariaComponent } from './components/previsao-horaria/previsao-horaria.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, BuscaTempoComponent],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    BuscaTempoComponent,
+    PrevisaoDiariaComponent,
+    PrevisaoHorariaComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'painel-meteo';
-  weatherData: any;
+  cityName: string = '';
+  dailyForecastData: any;
+  hourlyForecastData: any;
 
   constructor(private tempoService: TempoService) {}
 
   onCitySearch(city: string) {
-    console.log('Buscando por:', city);
+    this.cityName = city;
 
     this.tempoService
       .getCoordinates(city)
@@ -29,18 +37,21 @@ export class AppComponent {
         switchMap((dadosGeo) => {
           const lat = dadosGeo.results[0].latitude;
           const lon = dadosGeo.results[0].longitude;
-
           return this.tempoService.getForecast(lat, lon);
         })
       )
       .subscribe({
         next: (data) => {
-          this.weatherData = data;
-          console.log('Dados recebidos:', data);
+          console.log('Dados completos recebidos:', data);
+
+          this.dailyForecastData = data.daily;
+          this.hourlyForecastData = data.hourly;
         },
         error: (err) => {
           console.error('Erro na cadeia de busca:', err);
           alert('Cidade não encontrada ou erro na API.');
+          this.dailyForecastData = null;
+          this.hourlyForecastData = null;
         },
       });
   }

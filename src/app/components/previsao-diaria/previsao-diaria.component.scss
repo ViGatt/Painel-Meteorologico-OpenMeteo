@@ -1,0 +1,24 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 120px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.card strong {
+  font-size: 1.2em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card p {
+  margin: 4px 0;
+}

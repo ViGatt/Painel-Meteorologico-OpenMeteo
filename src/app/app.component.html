@@ -4,10 +4,10 @@
 
 <hr />
 
-<div *ngIf="weatherData" class="forecast-container">
-  <h2>Previsão para {{ weatherData.latitude }}, {{ weatherData.longitude }}</h2>
+<div *ngIf="dailyForecastData" class="forecast-container">
+  <h2>Previsão para {{ cityName | titlecase }}</h2>
 
-  <pre>{{ weatherData | json }}</pre>
+  <app-previsao-diaria [dailyData]="dailyForecastData"></app-previsao-diaria>
 </div>
 
 <router-outlet></router-outlet>
