@@ -1,59 +1,43 @@
-# PainelMeteo
+# 🚀 Desafio CIAg - Painel Meteorológico (Open-Meteo)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+Este projeto é uma solução para o Desafio 4 do processo seletivo da CIAg. É um painel meteorológico construído em Angular que consome a API Open-Meteo e permite ao usuário gerenciar um diário meteorológico local.
 
-## Development server
+##  Funcionalidades
 
-To start a local development server, run:
+* **Busca de Previsão:** Busca de previsão do tempo por nome da cidade, utilizando a API de Geocoding e Previsão da Open-Meteo.
+* **Exibição de Dados:** Exibe a previsão diária (7 dias) e horária (24 horas), incluindo temperatura, chuva e vento.
+* **CRUD de Diário:** Um diário meteorológico completo (Criar, Ler, Atualizar e Excluir) com persistência local (LocalStorage).
 
-```bash
-ng serve
-```
+##  Tecnologias Utilizadas
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+* **Angular (v17+)** 
+* **TypeScript**
+* **RxJS** (para encadeamento de chamadas de API com `switchMap`)
+* **Angular Reactive Forms** (para o formulário do diário)
+* **SCSS** (para estilização)
+* **API Open-Meteo** (Geocoding & Forecast)
+* **LocalStorage** (para persistência do diário)
 
-## Code scaffolding
+## Instruções de Instalação e Execução 
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1.  Clone este repositório:
+    ```bash
+    git clone [URL_DO_REPOSITORIO]
+    ```
+2.  Navegue até a pasta do projeto:
+    ```bash
+    cd painel-meteo
+    ```
+3.  Instale as dependências:
+    ```bash
+    npm install
+    ```
+4.  Execute o servidor de desenvolvimento:
+    ```bash
+    ng serve -o
+    ```
+5.  Abra `http://localhost:4200/` no seu navegador.
 
-```bash
-ng generate component component-name
-```
+## Deploy Online 
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+O deploy deste projeto está disponível em: ``
