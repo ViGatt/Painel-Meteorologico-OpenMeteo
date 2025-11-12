@@ -13,16 +13,19 @@ import { Observable } from 'rxjs';
 export class DiarioListComponent implements OnInit {
 
   anotacoes$!: Observable<any[]>;
-
   constructor(private diarioService: DiarioService) {}
 
   ngOnInit(): void {
     this.anotacoes$ = this.diarioService.getAnotacoes();
   }
 
-  onDelete(anotacao: any): void {
+  onDelete(id: number): void {
     if (confirm('Tem certeza que deseja excluir esta anotação?')) {
-      this.diarioService.deleteAnotacao(anotacao);
+      this.diarioService.deleteAnotacao(id);
     }
+  }
+  
+  onEdit(anotacao: any): void {
+    this.diarioService.selectEntryToEdit(anotacao);
   }
 }

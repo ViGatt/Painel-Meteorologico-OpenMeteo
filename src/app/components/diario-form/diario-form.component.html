@@ -3,6 +3,14 @@
 
   <form [formGroup]="diarioForm" (ngSubmit)="onSubmit()">
 
+    <button type="submit" [disabled]="diarioForm.invalid">
+    {{ isEditMode ? 'Atualizar Anotação' : 'Salvar Anotação' }}
+  </button>
+
+  <button type="button" *ngIf="isEditMode" (click)="onCancelEdit()" class="cancel-btn">
+    Cancelar Edição
+  </button>
+
     <div class="form-group">
       <label for="data">Data:</label>
       <input type="date" id="data" formControlName="data">

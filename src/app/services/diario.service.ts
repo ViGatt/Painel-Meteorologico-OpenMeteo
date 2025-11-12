@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs'; 
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+providedIn: 'root'
 })
 export class DiarioService {
 
-  private localStorageKey = 'diariometeo';
+private localStorageKey = 'diariometeo';
+private anotacoesSubject: BehaviorSubject<any[]>;
   
-  private anotacoesSubject: BehaviorSubject<any[]>;
+  private entryToEditSubject = new BehaviorSubject<any>(null);
 
   constructor() {
     const data = localStorage.getItem(this.localStorageKey);
@@ -18,7 +19,7 @@ export class DiarioService {
 
   private atualizarDados(anotacoes: any[]): void {
     localStorage.setItem(this.localStorageKey, JSON.stringify(anotacoes));
-    this.anotacoesSubject.next(anotacoes); 
+    this.anotacoesSubject.next(anotacoes);
   }
 
   getAnotacoes(): Observable<any[]> {
@@ -27,18 +28,39 @@ export class DiarioService {
 
   addAnotacao(novaAnotacao: any): void {
     const anotacoesAtuais = this.anotacoesSubject.getValue();
-    anotacoesAtuais.unshift(novaAnotacao);
+    
+    // Adiciona um ID único
+    const anotacaoComId = { id: Date.now(), ...novaAnotacao };
+    
+    anotacoesAtuais.unshift(anotacaoComId);
     this.atualizarDados(anotacoesAtuais);
   }
 
-  deleteAnotacao(anotacaoParaDeletar: any): void {
+  // Deleta pelo ID
+  deleteAnotacao(id: number): void {
+    let anotacoesAtuais = this.anotacoesSubject.getValue();
+    anotacoesAtuais = anotacoesAtuais.filter(item => item.id !== id);
+    this.atualizarDados(anotacoesAtuais);
+  }
+
+  // Método de Update
+  updateAnotacao(anotacaoAtualizada: any): void {
     let anotacoesAtuais = this.anotacoesSubject.getValue();
     
-    anotacoesAtuais = anotacoesAtuais.filter(item => 
-      item.data !== anotacaoParaDeletar.data || 
-      item.observacoes !== anotacaoParaDeletar.observacoes
-    );
+    // Encontra o índice da anotação pelo ID
+    const index = anotacoesAtuais.findIndex(item => item.id === anotacaoAtualizada.id);
     
-    this.atualizarDados(anotacoesAtuais);
+    if (index > -1) {
+      anotacoesAtuais[index] = anotacaoAtualizada;
+      this.atualizarDados(anotacoesAtuais);
+    }
+  }
+
+  selectEntryToEdit(anotacao: any): void {
+    this.entryToEditSubject.next(anotacao);
+  }
+
+  getEntryToEdit(): Observable<any> {
+    return this.entryToEditSubject.asObservable();
   }
 }
