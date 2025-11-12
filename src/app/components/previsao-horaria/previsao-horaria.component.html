@@ -1,1 +1,15 @@
-<p>previsao-horaria works!</p>
+<div *ngIf="hourlyData" class="hourly-forecast-container">
+  <h3>Previsão por hora (Próximas 24h)</h3>
+  
+  <div class="cards-container-hourly">
+    <div *ngFor="let hora of hourlyData.time | slice:0:24; let i = index" class="card-hourly">
+      <strong>{{ $any(hora) | date:'HH:mm' }}</strong>
+      <p>
+        {{ hourlyData.temperature_2m[i] | number:'1.0-0' }}°C
+      </p>
+      <p>
+        {{ hourlyData.rain[i] }} mm
+      </p>
+    </div>
+  </div>
+</div>

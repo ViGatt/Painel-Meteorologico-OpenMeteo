@@ -1,0 +1,27 @@
+.cards-container-hourly {
+  display: flex;
+  overflow-x: auto; 
+  gap: 12px;
+  padding: 16px 4px; 
+}
+
+.card-hourly {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 80px; 
+  text-align: center;
+  background-color: #fafafa;
+}
+
+.card-hourly strong {
+  font-size: 1em;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.card-hourly p {
+  margin: 2px 0;
+  font-size: 0.9em;
+}

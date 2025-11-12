@@ -8,6 +8,9 @@
   <h2>Previsão para {{ cityName | titlecase }}</h2>
 
   <app-previsao-diaria [dailyData]="dailyForecastData"></app-previsao-diaria>
+
+  <app-previsao-horaria [hourlyData]="hourlyForecastData"></app-previsao-horaria>
 </div>
+
 
 <router-outlet></router-outlet>
