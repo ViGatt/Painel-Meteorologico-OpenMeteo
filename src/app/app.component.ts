@@ -6,7 +6,9 @@ import { BuscaTempoComponent } from './components/busca-tempo/busca-tempo.compon
 import { switchMap } from 'rxjs/operators';
 import { DiarioFormComponent } from './components/diario-form/diario-form.component';
 import { DiarioListComponent } from './components/diario-list/diario-list.component';
-
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapaComponent } from './components/mapa/mapa.component';
+  
 import { PrevisaoDiariaComponent } from './components/previsao-diaria/previsao-diaria.component';
 import { PrevisaoHorariaComponent } from './components/previsao-horaria/previsao-horaria.component';
 
@@ -20,7 +22,9 @@ import { PrevisaoHorariaComponent } from './components/previsao-horaria/previsao
     PrevisaoDiariaComponent,
     PrevisaoHorariaComponent,
     DiarioFormComponent,
-    DiarioListComponent
+    DiarioListComponent,
+    LeafletModule,
+    MapaComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -29,19 +33,19 @@ export class AppComponent {
   cityName: string = '';
   dailyForecastData: any;
   hourlyForecastData: any;
+  currentLat: number = 0;
+  currentLon: number = 0;
 
   constructor(private tempoService: TempoService) {}
 
   onCitySearch(city: string) {
-    this.cityName = city;
-
-    this.tempoService
-      .getCoordinates(city)
-      .pipe(
-        switchMap((dadosGeo) => {
-          const lat = dadosGeo.results[0].latitude;
-          const lon = dadosGeo.results[0].longitude;
-          return this.tempoService.getForecast(lat, lon);
+    this.cityName = city; 
+    this.tempoService.getCoordinates(city).pipe(
+      switchMap((dadosGeo) => {
+        // Salva a lat/lon
+        this.currentLat = dadosGeo.results[0].latitude;
+        this.currentLon = dadosGeo.results[0].longitude;
+        return this.tempoService.getForecast(this.currentLat, this.currentLon);
         })
       )
       .subscribe({

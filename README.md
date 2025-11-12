@@ -17,6 +17,8 @@ Este projeto é uma solução para o Desafio 4 do processo seletivo da CIAg. É 
 * **SCSS** (para estilização)
 * **API Open-Meteo** (Geocoding & Forecast)
 * **LocalStorage** (para persistência do diário)
+* **Leaflet** (para o mapa interativo)
+* **@asymmetrik/ngx-leaflet** (Leaflet para Angular)
 
 ## Instruções de Instalação e Execução 
 
