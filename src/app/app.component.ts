@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TempoService } from './services/tempo.service';
 import { BuscaTempoComponent } from './components/busca-tempo/busca-tempo.component';
 import { switchMap } from 'rxjs/operators';
+import { DiarioFormComponent } from './components/diario-form/diario-form.component';
 
 import { PrevisaoDiariaComponent } from './components/previsao-diaria/previsao-diaria.component';
 import { PrevisaoHorariaComponent } from './components/previsao-horaria/previsao-horaria.component';
@@ -17,6 +18,7 @@ import { PrevisaoHorariaComponent } from './components/previsao-horaria/previsao
     BuscaTempoComponent,
     PrevisaoDiariaComponent,
     PrevisaoHorariaComponent,
+    DiarioFormComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

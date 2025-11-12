@@ -1,0 +1,25 @@
+<div class="diario-form-container">
+  <h3>Meu Diário Meteorológico</h3>
+
+  <form [formGroup]="diarioForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="data">Data:</label>
+      <input type="date" id="data" formControlName="data">
+    </div>
+
+    <div class="form-group">
+      <label for="observacoes">Observações:</label>
+      <textarea id="observacoes" formControlName="observacoes" rows="3" placeholder="Como estava o tempo?"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="fotoUrl">URL da Foto (Opcional):</label>
+      <input type="text" id="fotoUrl" formControlName="fotoUrl" placeholder="https://...">
+    </div>
+
+    <button type="submit" [disabled]="diarioForm.invalid">
+      Salvar Anotação
+    </button>
+  </form>
+</div>
