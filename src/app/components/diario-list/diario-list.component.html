@@ -1,0 +1,27 @@
+<div class="diario-list-container">
+  <h4>Anotações Salvas</h4>
+
+  <div *ngIf="(anotacoes$ | async) as anotacoes; else loading">
+    <div *ngIf="anotacoes.length > 0; else semAnotacoes">
+      
+      <div *ngFor="let anotacao of anotacoes" class="anotacao-card">
+        <div class="card-header">
+          <strong>{{ anotacao.data | date:'dd/MM/yyyy' }}</strong>
+          <button (click)="onDelete(anotacao)" class="delete-btn">×</button>
+        </div>
+        <p>{{ anotacao.observacoes }}</p>
+        <img *ngIf="anotacao.fotoUrl" [src]="anotacao.fotoUrl" alt="Foto do diário" class="foto-diario">
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <p>Carregando anotações...</p>
+  </ng-template>
+
+  <ng-template #semAnotacoes>
+    <p>Nenhuma anotação salva ainda.</p>
+  </ng-template>
+
+</div>

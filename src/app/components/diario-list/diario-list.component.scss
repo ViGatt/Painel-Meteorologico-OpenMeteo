@@ -1,0 +1,37 @@
+.anotacao-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background-color: #f9f9f9;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.card-header strong {
+  font-size: 1.1em;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff0000;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.foto-diario {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 12px;
+}
