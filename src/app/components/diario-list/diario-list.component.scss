@@ -19,14 +19,39 @@
   font-size: 1.1em;
 }
 
+.edit-btn,
 .delete-btn {
   background: none;
   border: none;
-  color: #ff0000;
-  font-size: 1.5em;
-  font-weight: bold;
+  padding: 4px;
   cursor: pointer;
-  padding: 0 8px;
+  border-radius: 50%; 
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.material-icons {
+  font-size: 20px;
+}
+
+.edit-btn {
+  color: var(--cor-primaria);
+  &:hover { 
+    background-color: #e0eaff;
+    color: var(--cor-primaria-hover); 
+  }
+}
+
+.delete-btn {
+  color: var(--cor-perigo);
+  &:hover { 
+    background-color: #ffe0e0; 
+    color: #a0202c; 
+  }
 }
 
 .foto-diario {

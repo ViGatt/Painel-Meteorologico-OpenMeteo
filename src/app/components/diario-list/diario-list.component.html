@@ -7,8 +7,12 @@
       <div *ngFor="let anotacao of anotacoes" class="anotacao-card">
         <div class="card-header">
           <strong>{{ anotacao.data | date:'dd/MM/yyyy' }}</strong>
-          <button (click)="onEdit(anotacao)" class="edit-btn">Editar</button>
-          <button (click)="onDelete(anotacao.id)" class="delete-btn">×</button>
+          <button (click)="onEdit(anotacao)" class="edit-btn">
+  <span class="material-icons">edit</span>
+</button>
+<button (click)="onDelete(anotacao.id)" class="delete-btn">
+  <span class="material-icons">delete</span>
+</button>
         </div>
         <p>{{ anotacao.observacoes }}</p>
         <img *ngIf="anotacao.fotoUrl" [src]="anotacao.fotoUrl" alt="Foto do diário" class="foto-diario">
