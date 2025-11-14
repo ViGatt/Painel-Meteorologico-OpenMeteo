@@ -1,15 +1,7 @@
 <div class="diario-form-container">
-  <h3>Meu Diário Meteorológico</h3>
+  <h3>{{ isEditMode ? 'Editar Anotação' : 'Meu Diário Meteorológico' }}</h3>
 
   <form [formGroup]="diarioForm" (ngSubmit)="onSubmit()">
-
-    <button type="submit" [disabled]="diarioForm.invalid">
-    {{ isEditMode ? 'Atualizar Anotação' : 'Salvar Anotação' }}
-  </button>
-
-  <button type="button" *ngIf="isEditMode" (click)="onCancelEdit()" class="cancel-btn">
-    Cancelar Edição
-  </button>
 
     <div class="form-group">
       <label for="data">Data:</label>
@@ -26,8 +18,15 @@
       <input type="text" id="fotoUrl" formControlName="fotoUrl" placeholder="https://...">
     </div>
 
-    <button type="submit" [disabled]="diarioForm.invalid">
-      Salvar Anotação
-    </button>
+    <div class="botoes-container">
+      <button type="submit" [disabled]="diarioForm.invalid">
+        {{ isEditMode ? 'Atualizar Anotação' : 'Salvar Anotação' }}
+      </button>
+
+      <button type="button" *ngIf="isEditMode" (click)="onCancelEdit()" class="cancel-btn">
+        Cancelar Edição
+      </button>
+    </div>
+    
   </form>
 </div>

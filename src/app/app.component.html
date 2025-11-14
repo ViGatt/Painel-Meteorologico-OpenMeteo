@@ -1,27 +1,33 @@
-<h1>Painel Meteorológico</h1>
+<div class="container">
 
-<app-busca-tempo (search)="onCitySearch($event)"></app-busca-tempo>
+  <h1>Painel Meteorológico</h1>
 
-<hr />
+  <app-busca-tempo (search)="onCitySearch($event)"></app-busca-tempo>
 
-<div *ngIf="dailyForecastData" class="forecast-container">
-  <h2>Previsão para {{ cityName | titlecase }}</h2>
-
-<div *ngIf="dailyForecastData" class="forecast-container">
+  <hr>
   
-  <h2 class="cidade-titulo">Previsão para {{ cityName | titlecase }}</h2>
+  <div *ngIf="dailyForecastData" class="forecast-container">
 
-  <app-mapa [lat]="currentLat" [lon]="currentLon"></app-mapa>
-  
-  <app-previsao-diaria [dailyData]="dailyForecastData"></app-previsao-diaria>
+    <h2 class="cidade-titulo">Previsão para {{ cityName | titlecase }}</h2>
 
-  <app-previsao-horaria [hourlyData]="hourlyForecastData"></app-previsao-horaria>
+    <app-mapa [lat]="currentLat" [lon]="currentLon"></app-mapa>
 
-  <hr class="diario-divider">
-  <app-diario-form></app-diario-form>
+    <app-previsao-diaria [dailyData]="dailyForecastData"></app-previsao-diaria>
+    
+    <app-previsao-horaria [hourlyData]="hourlyForecastData"></app-previsao-horaria>
 
-  <app-diario-list></app-diario-list>
+    <hr class="diario-divider">
+    
+    <app-diario-form></app-diario-form>
+    
+    <app-diario-list></app-diario-list>
+
+  </div>
+
+  <div *ngIf="!dailyForecastData" class="estado-inicial">
+    <p>Bem-vindo! Comece buscando por uma cidade.</p>
+  </div>
+
 </div>
-
 
 <router-outlet></router-outlet>

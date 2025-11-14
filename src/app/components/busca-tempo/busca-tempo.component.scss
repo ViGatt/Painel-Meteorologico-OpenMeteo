@@ -1,0 +1,16 @@
+.search-container {
+  display: flex;
+  gap: 8px; 
+}
+
+:host {
+  ::ng-deep {
+    input[type="text"] {
+      flex: 1; 
+    }
+
+    button {
+      flex-shrink: 0; 
+    }
+  }
+}

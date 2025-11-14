@@ -1,0 +1,35 @@
+.diario-form-container {
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.botoes-container {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cancel-btn {
+  background-color: var(--cor-texto-suave);
+
+  &:hover {
+    background-color: var(--cor-texto);
+  }
+}
