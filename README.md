@@ -28,7 +28,7 @@ Este projeto é uma solução para o Desafio 4 do processo seletivo da CIAg. É 
 
 1.  Clone este repositório:
     ```bash
-    git clone [URL_DO_REPOSITORIO]
+    git clone https://github.com/ViGatt/Painel-Meteorologico-OpenMeteo
     ```
 2.  Navegue até a pasta do projeto:
     ```bash
