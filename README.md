@@ -7,6 +7,9 @@ Este projeto é uma solução para o Desafio 4 do processo seletivo da CIAg. É 
 * **Busca de Previsão:** Busca de previsão do tempo por nome da cidade, utilizando a API de Geocoding e Previsão da Open-Meteo.
 * **Exibição de Dados:** Exibe a previsão diária (7 dias) e horária (24 horas), incluindo temperatura, chuva e vento.
 * **CRUD de Diário:** Um diário meteorológico completo (Criar, Ler, Atualizar e Excluir) com persistência local (LocalStorage).
+* **Mapa Interativo (Extra):** Exibe um pino no mapa com a localização exata da cidade buscada.
+* **UI/UX Moderna:** Interface responsiva com um tema global (variáveis CSS), layout em cards e ícones (Google Material Icons) para uma melhor experiência do usuário.
+
 
 ##  Tecnologias Utilizadas
 
@@ -19,6 +22,7 @@ Este projeto é uma solução para o Desafio 4 do processo seletivo da CIAg. É 
 * **LocalStorage** (para persistência do diário)
 * **Leaflet** (para o mapa interativo)
 * **@asymmetrik/ngx-leaflet** (Leaflet para Angular)
+* **Google Material Icons** (Para a UI)
 
 ## Instruções de Instalação e Execução 
 
